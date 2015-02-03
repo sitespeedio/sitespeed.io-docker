@@ -17,14 +17,25 @@ RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc
 # Update
 RUN apt-get update
 
-# Install git, curl, java, firefox, chrome, unzip, xvfb
-RUN apt-get -y install git curl default-jre-headless firefox google-chrome-stable unzip xvfb
+# Install git, curl, java, firefox, chrome, unzip, xvfb, node and npm
+RUN apt-get install -y  \
+  curl  \
+  default-jre-headless \
+  firefox \
+  git \
+  google-chrome-stable \
+  nodejs \
+  npm  \
+  unzip \
+  xvfb
 
 # Extras for xvfb
-RUN apt-get install -y libgl1-mesa-dri xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic
-
-# Get node and npm
-RUN apt-get install -y nodejs npm
+RUN apt-get install -y  \
+  libgl1-mesa-dri \
+  xfonts-100dpi \
+  xfonts-75dpi \
+  xfonts-scalable \
+  xfonts-cyrillic
 
 # Setup node (is there a better way to do this?)
 RUN ln -s /usr/bin/nodejs /usr/local/bin/node
