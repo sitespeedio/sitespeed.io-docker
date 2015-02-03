@@ -3,7 +3,7 @@ FROM phusion/baseimage:0.9.16
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
 # Use baseimage-docker's init system.
-CMD ["/sbin/my_init"]
+# CMD ["/sbin/my_init"]
 
 RUN apt-get update
 RUN apt-get install -y wget
@@ -18,19 +18,19 @@ RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc
 RUN apt-get update
 
 # Install git, curl, java, firefox, chrome, unzip, xvfb, node and npm
-RUN apt-get install -y  \
-  curl  \
+RUN apt-get install -y \
+  curl \
   default-jre-headless \
   firefox \
   git \
   google-chrome-stable \
   nodejs \
-  npm  \
+  npm \
   unzip \
   xvfb
 
 # Extras for xvfb
-RUN apt-get install -y  \
+RUN apt-get install -y \
   libgl1-mesa-dri \
   xfonts-100dpi \
   xfonts-75dpi \
@@ -48,7 +48,7 @@ RUN wget -N http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64
 RUN unzip chromedriver_linux64.zip
 RUN rm chromedriver_linux64.zip
 RUN chmod +x chromedriver
-RUN mv -f chromedriver  /usr/bin/chromedriver
+RUN mv -f chromedriver /usr/bin/chromedriver
 
 # Set locale
 RUN echo "export LC_ALL='en_US.utf8'" >> ~/.bashrc
