@@ -49,10 +49,14 @@ RUN echo "google-chrome-stable --version" >> ~/.bashrc
 # Starting Firefox will get us this message
 # GLib-CRITICAL **: g_slice_set_config: assertion 'sys_page_size == 0' failed
 # https://bugzilla.mozilla.org/show_bug.cgi?id=833117
-# echo "firefox -version"
+# RUN echo "firefox -version" >> ~/.bashrc
 
 # and then turn off chrome auto update
 RUN mv /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.save
+
+VOLUME /sitespeed.io
+
+WORKDIR /sitespeed.io
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
