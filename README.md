@@ -2,6 +2,10 @@
 
 Current status: Firefox works, Chrome fails because the chromedriver cannot start Chrome
 
+TODO:
+* Fix Chrome
+* Map output directory
+
 Build
 ```
 docker build -t sitespeedio/sitespeedio:v1 .
