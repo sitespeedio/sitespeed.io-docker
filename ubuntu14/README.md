@@ -1,18 +1,20 @@
-# sitespeed.io Docker on Ubuntu 14.04
+# sitespeed.io
 
-You will get:
-* sitespeed.io
-* Chrome
-* Chromedriver
-* Firefox
+This Docker get you [sitespeed.io](http://www.sitespeed.io) with Chrome and Firefox installed.
 
-Build
+## Usage
+
+The ```--rm -v "$(pwd)":/sitespeed.io``` will make the result HTML stored on your host.
+
+### Analyze a site and fetch timings using Chrome
 ```
-docker build -t sitespeedio/sitespeedio:v1 .
+ docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io-docker sitespeed.io -u http://www.sitespeed.io -b chrome
 ```
 
-Run like this (if you named your container sitespeedio/sitespeedio:v1):
+### Analyze a site and fetch timings using Firefox
+```
+ docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io-docker sitespeed.io -u http://www.sitespeed.io -b firefox
+```
 
-```
- docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeedio:v1 sitespeed.io -u http://www.sitespeed.io -d 0 -b chrome
-```
+## Configuration
+sitespeed.io is highly configurable, check the [documentation](http://www.sitespeed.io/documentation)
