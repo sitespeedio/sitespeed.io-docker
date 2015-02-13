@@ -6,12 +6,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN true
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
-# Use baseimage-docker's init system.
-# CMD ["/sbin/my_init"]
-
-RUN apt-get update
-RUN apt-get install -y wget
-
+RUN apt-get update && apt-get install -y wget
 # Add Google public key to apt, needed to get Chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
@@ -19,27 +14,23 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo ap
 RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 
 # Update
-RUN apt-get update
-
-# Install git, curl, java, firefox, chrome, unzip, xvfb, node and npm
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
   curl \
   default-jre-headless \
   firefox \
   git \
   google-chrome-stable \
+  libgl1-mesa-dri \
   nodejs \
   npm \
   unzip \
-  xvfb
-
-# Extras for xvfb
-RUN apt-get install -y \
-  libgl1-mesa-dri \
   xfonts-100dpi \
   xfonts-75dpi \
   xfonts-scalable \
-  xfonts-cyrillic
+  xfonts-cyrillic \
+  xvfb \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 # Setup node (is there a better way to do this?)
 RUN ln -s /usr/bin/nodejs /usr/local/bin/node
@@ -47,16 +38,13 @@ RUN ln -s /usr/bin/nodejs /usr/local/bin/node
 # install sitespeed.io
 RUN npm install -g sitespeed.io
 
-# Now fetch the chrome driver
-RUN wget -N http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64.zip
-RUN unzip chromedriver_linux64.zip
-RUN rm chromedriver_linux64.zip
-RUN chmod +x chromedriver
-RUN mv -f chromedriver /usr/bin/chromedriver
-
-# and then turn off chrome auto update
-RUN mv /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.save
-
+# Now fetch the chrome driver and then turn off chrome auto update
+RUN wget -N http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64.zip && \
+unzip chromedriver_linux64.zip && \
+rm chromedriver_linux64.zip && \
+chmod +x chromedriver && \
+mv -f chromedriver /usr/bin/chromedriver && \
+mv /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.save
 
 # fix https://code.google.com/p/chromium/issues/detail?id=318548
 RUN mkdir -p /usr/share/desktop-directories
@@ -65,8 +53,5 @@ ADD ./scripts/ /home/root/scripts
 VOLUME /sitespeed.io
 
 WORKDIR /sitespeed.io
-
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENTRYPOINT ["/home/root/scripts/start.sh"]
