@@ -43,8 +43,8 @@ RUN wget -N http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64
 unzip chromedriver_linux64.zip && \
 rm chromedriver_linux64.zip && \
 chmod +x chromedriver && \
-mv -f chromedriver /usr/bin/chromedriver && \
-mv /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.save
+mv -f chromedriver /usr/bin/chromedriver
+# mv /etc/apt/sources.list.d/google-chrome.list /etc/apt/sources.list.d/google-chrome.list.save
 
 # fix https://code.google.com/p/chromium/issues/detail?id=318548
 RUN mkdir -p /usr/share/desktop-directories
