@@ -1,4 +1,4 @@
-FROM sitespeedio/sitespeed.io:base
+FROM ubuntu:14.04
 
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
