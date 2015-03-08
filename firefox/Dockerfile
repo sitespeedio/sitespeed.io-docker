@@ -1,28 +1,18 @@
-FROM ubuntu:14.04
-
-ENV LC_ALL C
-ENV DEBIAN_FRONTEND noninteractive
-ENV DEBCONF_NONINTERACTIVE_SEEN true
+FROM sitespeedio/sitespeed.io-standalone
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
-# Install Firefox, Xvfb & sitespeed.io
+# firefox & xvfb
 
 RUN \
-apt-get update && apt-get install -y \
-default-jre-headless \
-git \
-nodejs \
-npm \
+apt-get update && \
+apt-get install -y \
+firefox \
 xfonts-100dpi \
 xfonts-75dpi \
 xfonts-scalable \
 xfonts-cyrillic \
-firefox \
 xvfb --no-install-recommends && \
-ln -s /usr/bin/nodejs /usr/local/bin/node && \
-npm install -g sitespeed.io && npm cache clean && \
-apt-get purge -y npm git && \
 apt-get clean autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
