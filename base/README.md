@@ -6,10 +6,10 @@ This Docker get you [sitespeed.io](http://www.sitespeed.io) without any browsers
 
 The ```--rm -v "$(pwd)":/sitespeed.io``` will make the result HTML stored on your host.
 
-### Analyze a site and fetch timings using Firefox
+### Analyze a site
 ```
-docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io:base sitespeed.io -u http://www.sitespeed.io 
+docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io-standalone sitespeed.io -u http://www.sitespeed.io
 ```
 
 ## Configuration
-sitespeed.io is highly configurable, check the [documentation](http://www.sitespeed.io/documentation).
+sitespeed.io is highly configurable, check the [documentation](http://www.sitespeed.io/documentation). Note: Fetching timings using SlimerJS will need Xvfb, check the browser containers on how to include it.

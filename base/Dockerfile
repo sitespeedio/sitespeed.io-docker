@@ -7,6 +7,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN true
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
 # Setting up sitespeed.io without browsers on Ubuntu
+# We nee Java for the crawler (soon to be removed we hope)
 
 RUN \
 apt-get update && \
