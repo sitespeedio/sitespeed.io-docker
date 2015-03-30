@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+date
 # print versions
 # Starting Firefox will get us this message
 # GLib-CRITICAL **: g_slice_set_config: assertion 'sys_page_size == 0' failed
