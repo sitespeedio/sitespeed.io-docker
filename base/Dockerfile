@@ -13,6 +13,7 @@ RUN \
 apt-get update && \
 apt-get install -y \
 default-jre-headless \
+ca-certificates \
 git \
 nodejs \
 npm --no-install-recommends && \
