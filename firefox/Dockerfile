@@ -8,6 +8,7 @@ RUN \
 apt-get update && \
 apt-get install -y \
 firefox \
+ca-certificates \
 xfonts-100dpi \
 xfonts-75dpi \
 xfonts-scalable \

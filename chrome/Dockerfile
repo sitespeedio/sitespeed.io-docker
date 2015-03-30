@@ -15,6 +15,7 @@ rm chromedriver_linux64.zip && \
 chmod +x chromedriver && \
 mv -f chromedriver /usr/bin/chromedriver && \
 apt-get update && apt-get install -y \
+ca-certificates	\
 libgl1-mesa-dri \
 xfonts-100dpi \
 xfonts-75dpi \
