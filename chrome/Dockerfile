@@ -1,41 +1,22 @@
-FROM sitespeedio/sitespeed.io-standalone
+FROM sitespeedio/chrome:41.0
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
-# Woho, this is a long run to try to keep the image as small as possible
+# We nee Java for the crawler (soon to be removed we hope)
 
 RUN \
 apt-get update && \
-apt-get install -y wget unzip && \
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
-wget -N http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64.zip && \
-unzip chromedriver_linux64.zip && \
-rm chromedriver_linux64.zip && \
-chmod +x chromedriver && \
-mv -f chromedriver /usr/bin/chromedriver && \
-apt-get update && apt-get install -y \
-ca-certificates	\
-libgl1-mesa-dri \
-xfonts-100dpi \
-xfonts-75dpi \
-xfonts-scalable \
-xfonts-cyrillic \
-xvfb --no-install-recommends && \
-apt-get purge -y wget unzip && \
 apt-get install -y \
-google-chrome-stable && \
+default-jre-headless \
+git \
+nodejs \
+npm --no-install-recommends && \
+ln -s /usr/bin/nodejs /usr/local/bin/node && \
+npm install -g sitespeed.io && npm cache clean && \
+apt-get purge -y npm git && \
 apt-get clean autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Can't get --no-install-recommends to work for chrome-stable
-# fix https://code.google.com/p/chromium/issues/detail?id=318548
-# RUN mkdir -p /usr/share/desktop-directories
-
-ADD ./scripts/ /home/root/scripts
 
 VOLUME /sitespeed.io
 
 WORKDIR /sitespeed.io
-
-ENTRYPOINT ["/home/root/scripts/start.sh"]
