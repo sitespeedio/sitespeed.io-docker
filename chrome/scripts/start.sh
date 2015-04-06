@@ -8,6 +8,6 @@ google-chrome-stable --version
 echo 'Starting Xvfb ...'
 export DISPLAY=:99
 2>/dev/null 1>&2 Xvfb :99 -shmem -screen 0 1366x768x16 &
-#su - seleniumuser
-su - seleniumuser -c '2>/dev/null 1>&2 java -jar /home/root/selenium-server-standalone-2.45.0.jar &'
+echo 'Starting Selenium server ...'
+2>/dev/null 1>&2 java -jar /home/root/selenium-server-standalone-2.45.0.jar &
 exec "$@"
