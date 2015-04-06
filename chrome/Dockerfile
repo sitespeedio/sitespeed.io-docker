@@ -20,6 +20,13 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD ./scripts/ /home/root/scripts
 ADD ./selenium-server-standalone-2.45.0.jar /home/root/
 
+RUN useradd -d /home/seleniumuser -m seleniumuser
+RUN mkdir -p /home/seleniumuser/chrome
+RUN chown -R seleniumuser /home/seleniumuser
+RUN chgrp -R seleniumuser /home/seleniumuser
+
+ENV SELENIUM_PORT 4444
+
 EXPOSE 4444
 
 VOLUME /sitespeed.io
