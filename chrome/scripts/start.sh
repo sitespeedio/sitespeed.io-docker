@@ -9,5 +9,5 @@ echo 'Starting Xvfb ...'
 export DISPLAY=:99
 2>/dev/null 1>&2 Xvfb :99 -shmem -screen 0 1366x768x16 &
 echo 'Starting Selenium server ...'
-nohup java -jar /home/root/selenium-server-standalone-2.45.0.jar &
+nohup java -jar /home/root/selenium-server-standalone-2.45.0.jar -Djava.security.egd=file:/dev/./urandom > /tmp/selenium.log &
 exec "$@"
