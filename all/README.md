@@ -8,12 +8,12 @@ The ```--rm -v "$(pwd)":/sitespeed.io``` will make the result HTML stored on you
 
 ### Analyze a site and fetch timings using Chrome
 ```
-docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io sitespeed.io -u http://www.sitespeed.io -b chrome
+docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io sitespeed.io -u http://www.sitespeed.io -b chrome --seleniumServer http://127.0.0.1:4444/wd/hub
 ```
 
 ### Analyze a site and fetch timings using Firefox
 ```
-docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io sitespeed.io -u http://www.sitespeed.io -b firefox
+docker run --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io sitespeed.io -u http://www.sitespeed.io -b firefox
 ```
 
 ## Configuration

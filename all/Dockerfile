@@ -17,6 +17,9 @@ apt-get purge -y npm git && \
 apt-get clean autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ADD ./scripts/ /home/root/scripts
+ADD ./selenium-server-standalone-2.45.0.jar /home/root/
+
 VOLUME /sitespeed.io
 
 WORKDIR /sitespeed.io
