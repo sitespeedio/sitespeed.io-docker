@@ -13,7 +13,7 @@ docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io 
 
 ### Analyze a site and fetch timings using Firefox
 ```
-docker run --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io sitespeed.io -u http://www.sitespeed.io -b firefox
+docker run --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io sitespeed.io -u http://www.sitespeed.io -b firefox --seleniumServer http://127.0.0.1:4444/wd/hub
 ```
 
 ## Configuration
