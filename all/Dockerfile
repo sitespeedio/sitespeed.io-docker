@@ -1,14 +1,17 @@
-FROM sitespeedio/browsers:firefox-27.0-chrome-41.0
+FROM sitespeedio/browsers:firefox-27.0-chrome-42.0
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
-# We nee Java for the crawler (soon to be removed we hope)
+# We need Java for the crawler (soon to be removed we hope)
+
+# Note: libicu52 is needed for phantomjs 2
 
 RUN \
 apt-get update && \
 apt-get install -y \
 default-jre-headless \
 git \
+libicu52 \
 nodejs \
 build-essential \
 npm --no-install-recommends && \
@@ -20,6 +23,7 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ./scripts/ /home/root/scripts
 ADD ./selenium-server-standalone-2.45.0.jar /home/root/
+ADD ./phantomjs-2.0.0-ubuntu-14.04/phantomjs /usr/local/phantomjs/bin/
 
 VOLUME /sitespeed.io
 
