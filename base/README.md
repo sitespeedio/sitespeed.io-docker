@@ -8,7 +8,12 @@ The ```--rm -v "$(pwd)":/sitespeed.io``` will make the result HTML stored on you
 
 ### Analyze a site
 ```
-docker run --privileged --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io-standalone sitespeed.io -u http://www.sitespeed.io
+docker run --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io-standalone sitespeed.io -u http://www.sitespeed.io
+```
+
+Wanna fetch timings using PhantomJS 2?
+```
+docker run --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io-standalone sitespeed.io -u http://www.sitespeed.io --phantomjsPath /usr/local/phantomjs/bin/phantomjs -b headless
 ```
 
 ## Configuration
