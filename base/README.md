@@ -12,6 +12,7 @@ docker run --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io-standalone si
 ```
 
 Wanna fetch timings using PhantomJS 2?
+
 ```
 docker run --rm -v "$(pwd)":/sitespeed.io sitespeedio/sitespeed.io-standalone sitespeed.io -u http://www.sitespeed.io --phantomjsPath /usr/local/phantomjs/bin/phantomjs -b headless
 ```
