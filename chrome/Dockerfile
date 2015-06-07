@@ -21,7 +21,7 @@ apt-get clean autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ./scripts/ /home/root/scripts
-ADD ./selenium-server-standalone-2.45.0.jar /home/root/
+ADD ./selenium-server-standalone-2.46.0.jar /home/root/
 ADD ./phantomjs-2.0.0-ubuntu-14.04/phantomjs /usr/local/phantomjs/bin/
 
 VOLUME /sitespeed.io
