@@ -1,4 +1,4 @@
-FROM sitespeedio/firefox:37.0
+FROM sitespeedio/firefox:38.0
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
