@@ -16,7 +16,7 @@ nodejs \
 build-essential \
 npm --no-install-recommends && \
 ln -s /usr/bin/nodejs /usr/local/bin/node && \
-npm install -g sitespeed.io@3.6.2-canary2 && npm cache clean && \
+npm install -g sitespeed.io && npm cache clean && \
 apt-get purge -y npm git build-essential && \
 apt-get clean autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
