@@ -1,4 +1,4 @@
-FROM sitespeedio/chrome:43.0
+FROM sitespeedio/chrome:44.0
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
