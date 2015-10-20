@@ -8,16 +8,15 @@ MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
 RUN \
 apt-get update && \
+apt-get install -y curl && \
+curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash - && \
 apt-get install -y \
 default-jre-headless \
 git \
 libicu52 \
-nodejs \
-build-essential \
-npm --no-install-recommends && \
-ln -s /usr/bin/nodejs /usr/local/bin/node && \
+build-essential --no-install-recommends && \
 npm install -g sitespeed.io && npm cache clean && \
-apt-get purge -y npm git build-essential && \
+apt-get purge -y curl git build-essential && \
 apt-get clean autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
