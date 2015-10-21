@@ -14,6 +14,7 @@ apt-get install -y \
 default-jre-headless \
 git \
 libicu52 \
+nodejs \
 build-essential --no-install-recommends && \
 npm install -g sitespeed.io && npm cache clean && \
 apt-get purge -y curl git build-essential && \

@@ -17,6 +17,7 @@ curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash - && \
 apt-get install -y \
 default-jre-headless \
 git \
+nodejs \
 libicu52 --no-install-recommends && \
 npm install -g sitespeed.io && npm cache clean && \
 apt-get purge -y curl git && \
