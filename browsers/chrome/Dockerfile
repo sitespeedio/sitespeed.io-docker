@@ -12,7 +12,7 @@ RUN \
 apt-get update && \
 apt-get install -y wget unzip && \
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
+  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list && \
 wget -N http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip && \
 unzip chromedriver_linux64.zip && \
 rm chromedriver_linux64.zip && \
