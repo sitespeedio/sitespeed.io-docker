@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:15.10
 
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
@@ -13,14 +13,17 @@ MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 RUN \
 apt-get update && \
 apt-get install -y curl && \
-curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash - && \
+curl --silent --location https://deb.nodesource.com/setup_4.x | bash - && \
 apt-get install -y \
 default-jre-headless \
 git \
+build-essential \
+python \
 nodejs \
-libicu52 --no-install-recommends && \
-npm install -g sitespeed.io && npm cache clean && \
+libicu55 --no-install-recommends && \
+npm install --unsafe-perm -g sitespeed.io && npm cache clean && \
 apt-get purge -y curl git && \
+apt-get autoremove -y && \
 apt-get clean autoclean && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
