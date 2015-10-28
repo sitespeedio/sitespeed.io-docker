@@ -8,7 +8,7 @@ MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 RUN \
 apt-get update && \
 apt-get install -y curl && \
-curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash - && \
+curl --silent --location https://deb.nodesource.com/setup_4.x | bash - && \
 apt-get install -y \
 default-jre-headless \
 git \
