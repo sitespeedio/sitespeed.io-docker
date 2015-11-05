@@ -38,8 +38,4 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ./scripts/ /home/root/scripts
 
-VOLUME /sitespeed.io
-
-WORKDIR /sitespeed.io
-
 ENTRYPOINT ["/home/root/scripts/start.sh"]
