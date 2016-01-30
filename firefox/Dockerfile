@@ -15,6 +15,7 @@ git \
 libicu52 \
 nodejs \
 build-essential --no-install-recommends && \
+npm set progress=false && \
 npm install -g sitespeed.io && npm cache clean && \
 apt-get purge -y curl git build-essential && \
 apt-get clean autoclean && \
@@ -22,7 +23,6 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD ./scripts/ /home/root/scripts
 ADD ./selenium-server-standalone-2.48.2.jar /home/root/
-ADD ./phantomjs-2.0.0-ubuntu-14.04/phantomjs /usr/local/phantomjs/bin/
 
 VOLUME /sitespeed.io
 
