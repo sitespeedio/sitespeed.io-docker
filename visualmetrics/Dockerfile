@@ -1,4 +1,4 @@
-FROM sitespeedio/browsers:firefox-44.0-chrome-48.0
+FROM sitespeedio/browsers:firefox-45.0-chrome-49.0
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
 # Lets install all dependencies for VisualMetrics
