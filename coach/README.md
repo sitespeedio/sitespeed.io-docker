@@ -16,3 +16,8 @@ docker run sitespeedio/coach webcoach https://www.sitespeed.io
 ```
 docker run sitespeedio/coach webcoach https://www.sitespeed.io -b chrome
 ```
+
+### Drop the output to a file
+```
+docker run --rm -v "$(pwd)":/coach sitespeedio/coach webcoach https://www.sitespeed.io -o advice.json -f json
+```
