@@ -5,7 +5,7 @@ This is the [coach](https://github.com/sitespeedio/coach) with Chrome and Firefo
 ![The coach logo](https://github.com/sitespeedio/coach/raw/master/img/coach.png)
 
 ## Usage
-Read the [docs](https://github.com/sitespeedio/coach).
+Read the [docs](https://github.com/sitespeedio/coach) at Github.
 
 ### Analyze a site using Firefox
 ```
