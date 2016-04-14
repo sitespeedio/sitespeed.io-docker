@@ -2,7 +2,6 @@
 set -e
 date
 # print versions
-chromedriver --version
 google-chrome-stable --version
 
 echo 'Starting Xvfb ...'

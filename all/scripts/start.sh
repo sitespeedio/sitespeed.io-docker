@@ -2,7 +2,6 @@
 set -e
 date
 # print versions
-chromedriver --version
 google-chrome-stable --version
 # Starting Firefox will get us this message
 # GLib-CRITICAL **: g_slice_set_config: assertion 'sys_page_size == 0' failed
