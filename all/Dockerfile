@@ -16,6 +16,11 @@ git \
 libicu52 \
 nodejs \
 build-essential --no-install-recommends && \
+wget -N http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip && \
+unzip chromedriver_linux64.zip && \
+rm chromedriver_linux64.zip && \
+chmod +x chromedriver && \
+mv -f chromedriver /usr/bin/chromedriver && \
 npm set progress=false && \
 npm install -g sitespeed.io && npm cache clean && \
 apt-get purge -y curl git build-essential && \
