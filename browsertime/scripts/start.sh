@@ -11,4 +11,7 @@ firefox --version 2>/dev/null
 echo 'Starting Xvfb ...'
 export DISPLAY=:99
 2>/dev/null 1>&2 Xvfb :99 -shmem -screen 0 1366x768x16 &
+echo 'Start comcast'
+
+comcast --device=eth0 --latency=28 --target-bw=75000 --packet-loss=0%
 exec "$@"
