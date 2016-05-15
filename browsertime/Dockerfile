@@ -8,7 +8,6 @@ RUN apt-get update -y && apt-get install -y \
   curl \
   gcc \
   git \
-  default-jre-headless \
   --no-install-recommends --force-yes && rm -rf /var/lib/apt/lists/*
 
 # Install nodejs
@@ -16,7 +15,7 @@ RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash -  && \
   apt-get install nodejs -y
 
 # And get Browsertime
-RUN npm install browsertime@1.0.0-alpha.13 -g
+RUN npm install browsertime@1.0.0-alpha.15 -g
 
 RUN mkdir $HOME/go
 ENV PATH $HOME/go/bin:/usr/local/go/bin:$PATH
