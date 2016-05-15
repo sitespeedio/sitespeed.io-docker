@@ -8,10 +8,10 @@ The ```--rm -v "$(pwd)":/browsertime``` will make the result stored on your host
 
 ### Timings using Chrome
 ```
-docker run -v "$(pwd)":/browsertime  sitespeedio/browsertime browsertime https://www.sitespeed.io --experimental.nativeHar -b chrome
+docker run --privileged -v "$(pwd)":/browsertime  sitespeedio/browsertime browsertime https://www.sitespeed.io -b chrome --experimental.video
 ```
 
 ### Timings using Firefox
 ```
-docker run -v "$(pwd)":/browsertime  sitespeedio/browsertime browsertime https://www.sitespeed.io --experimental.nativeHar -b firefox
+ docker run --privileged -v "$(pwd)":/browsertime  sitespeedio/browsertime browsertime https://www.sitespeed.io -b firefox --experimental.video
 ```
