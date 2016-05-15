@@ -31,8 +31,10 @@ RUN wget http://johnvansickle.com/ffmpeg/releases/ffmpeg-release-64bit-static.ta
   rm ffmpeg-release-64bit-static.tar.xz
 
 # And get VisualMetrics
-RUN git clone https://github.com/WPO-Foundation/visualmetrics.git
+# RUN git clone https://github.com/WPO-Foundation/visualmetrics.git
+
+ADD ./visualmetrics.py /visualmetrics/
 
 WORKDIR visualmetrics
 
-CMD ["python", "visualmetrics/visualmetrics.py", "--check"]
+CMD ["python", "/visualmetrics/visualmetrics.py", "--check"]

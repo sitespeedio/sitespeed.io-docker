@@ -1,4 +1,4 @@
-FROM sitespeedio/browsers:firefox-45.0-chrome-50.0
+FROM sitespeedio/visualmetrics
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
@@ -15,7 +15,7 @@ RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash -  && \
   apt-get install nodejs -y
 
 # And get Browsertime
-RUN npm install browsertime@1.0.0-alpha.8 -g
+RUN npm install browsertime@1.0.0-alpha.16 -g
 
 ADD ./scripts/ /home/root/scripts
 
