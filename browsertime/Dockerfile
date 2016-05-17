@@ -15,7 +15,7 @@ RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash -  && \
   apt-get install nodejs -y
 
 # And get Browsertime
-RUN npm install browsertime@1.0.0-alpha.16 -g
+RUN npm install browsertime@1.0.0-alpha.17 -g
 
 ADD ./scripts/ /home/root/scripts
 
