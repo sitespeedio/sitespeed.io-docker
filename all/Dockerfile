@@ -1,34 +1,23 @@
-FROM sitespeedio/browsers:firefox-45.0-chrome-49.0
+FROM sitespeedio/visualmetrics
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
-# We need Java for the crawler (soon to be removed we hope)
+RUN apt-get update -y && apt-get install -y \
+  build-essential \
+  ca-certificates \
+  curl \
+  gcc \
+  git \
+  --no-install-recommends --force-yes && rm -rf /var/lib/apt/lists/*
 
-# Note: libicu52 is needed for phantomjs 2
+# Install nodejs
+RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash -  && \
+  apt-get install nodejs -y
 
-RUN \
-apt-get update && \
-apt-get install -y curl && \
-curl --silent --location https://deb.nodesource.com/setup_4.x | bash - && \
-apt-get install -y \
-default-jre-headless \
-git \
-libicu52 \
-nodejs \
-build-essential --no-install-recommends && \
-wget -N http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip && \
-unzip chromedriver_linux64.zip && \
-rm chromedriver_linux64.zip && \
-chmod +x chromedriver && \
-mv -f chromedriver /usr/bin/chromedriver && \
-npm set progress=false && \
-npm install -g sitespeed.io && npm cache clean && \
-apt-get purge -y curl git build-essential && \
-apt-get clean autoclean && \
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# And get sitespeed
+RUN git clone -b 4.0 https://github.com/sitespeedio/sitespeed.io.git && cd sitespeed.io && npm install -g
 
 ADD ./scripts/ /home/root/scripts
-ADD ./selenium-server-standalone-2.48.2.jar /home/root/
 
 VOLUME /sitespeed.io
 
