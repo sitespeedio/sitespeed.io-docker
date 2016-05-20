@@ -15,7 +15,7 @@ RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash -  && \
   apt-get install nodejs -y
 
 # And get sitespeed
-RUN git clone -b https://github.com/sitespeedio/sitespeed.io.git && cd sitespeed.io && npm install -g
+RUN git clone https://github.com/sitespeedio/sitespeed.io.git && cd sitespeed.io && npm install -g
 
 ADD ./scripts/ /home/root/scripts
 
