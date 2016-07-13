@@ -12,10 +12,4 @@ echo 'Starting Xvfb ...'
 export DISPLAY=:99
 2>/dev/null 1>&2 Xvfb :99 -shmem -screen 0 1366x768x16 &
 
-echo 'Set kind of cable connectivity'
-tc qdisc add dev eth0 handle 1: root htb default 11
-tc class add dev eth0 parent 1: classid 1:1 htb rate 5Mbps
-tc class add dev eth0 parent 1:1 classid 1:11 htb rate 5Mbps
-tc qdisc add dev eth0 parent 1:11 handle 10: netem delay 28ms
-
 exec "$@"
