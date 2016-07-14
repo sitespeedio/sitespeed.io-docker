@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM sitespeedio/visualmetrics:4.0
 
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
