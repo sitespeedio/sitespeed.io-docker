@@ -1,4 +1,4 @@
-FROM sitespeedio/visualmetrics
+FROM sitespeedio/browsers:4.0
 
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
