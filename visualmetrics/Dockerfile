@@ -1,4 +1,4 @@
-FROM sitespeedio/browsers:firefox-45.0-chrome-50.0
+FROM ubuntu:16.04
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
 # Lets install all dependencies for VisualMetrics
@@ -16,6 +16,7 @@ RUN apt-get update -y && apt-get install -y \
   python-matplotlib \
   python-pandas \
   python-pip \
+  python-setuptools \
   python-sympy \
   python-nose \
   wget \
@@ -32,9 +33,5 @@ RUN wget http://johnvansickle.com/ffmpeg/releases/ffmpeg-release-64bit-static.ta
 
 # And get VisualMetrics
 # RUN git clone https://github.com/WPO-Foundation/visualmetrics.git
-
-ADD ./visualmetrics.py /visualmetrics/
-
-WORKDIR visualmetrics
-
-CMD ["python", "/visualmetrics/visualmetrics.py", "--check"]
+# WORKDIR visualmetrics
+# CMD ["python", "/visualmetrics/visualmetrics.py", "--check"]
