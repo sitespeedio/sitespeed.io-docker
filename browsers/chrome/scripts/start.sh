@@ -3,6 +3,7 @@ set -e
 date
 # print versions
 google-chrome-stable --version
+google-chrome --product-version
 
 echo 'Starting Xvfb ...'
 export DISPLAY=:99

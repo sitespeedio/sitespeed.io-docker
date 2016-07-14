@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 ENV LC_ALL C
 ENV DEBIAN_FRONTEND noninteractive
