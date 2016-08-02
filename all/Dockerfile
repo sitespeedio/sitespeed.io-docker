@@ -3,6 +3,7 @@ FROM sitespeedio/browsers:4.0
 MAINTAINER Peter Hedenskog <peter@soulgalore.com>
 
 RUN apt-get update -y && apt-get install -y \
+  iproute2 iptables \
   build-essential \
   ca-certificates \
   curl \
@@ -18,6 +19,10 @@ RUN curl --silent --location https://deb.nodesource.com/setup_4.x | bash -  && \
 RUN git clone https://github.com/sitespeedio/sitespeed.io.git && cd sitespeed.io && npm install -g
 
 ADD ./scripts/ /home/root/scripts
+
+RUN mkdir -p /opt/gee/bin
+COPY scripts/gee /opt/gee/bin
+CMD /opt/gee/bin/gee
 
 VOLUME /sitespeed.io
 
