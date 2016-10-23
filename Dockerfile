@@ -1,5 +1,7 @@
 FROM sitespeedio/webbrowsers:firefox-49.0-chrome-54.0
 
+COPY start.sh /start.sh
+
 RUN apt-get update
 
 RUN apt-get install -y git
@@ -17,8 +19,6 @@ USER app
 WORKDIR $HOME/sitespeed.io
 
 RUN npm install --production
-
-COPY start.sh /start.sh
 
 ENTRYPOINT ["/start.sh"]
 VOLUME /sitespeed.io
