@@ -9,15 +9,15 @@ Read the [docs](https://github.com/sitespeedio/coach) at Github.
 
 ### Analyze a site using Firefox
 ```
-docker run sitespeedio/coach webcoach https://www.sitespeed.io
+docker run --rm sitespeedio/coach https://www.sitespeed.io
 ```
 
 ### Analyze a page using Chrome
 ```
-docker run sitespeedio/coach webcoach https://www.sitespeed.io -b chrome
+docker run --privileged --rm sitespeedio/coach https://www.sitespeed.io -b chrome
 ```
 
 ### Drop the output to a file
 ```
-docker run --rm -v "$(pwd)":/coach sitespeedio/coach webcoach https://www.sitespeed.io -o advice.json -f json
+docker run --rm -v "$(pwd)":/coach sitespeedio/coach https://www.sitespeed.io -o advice.json -f json
 ```
